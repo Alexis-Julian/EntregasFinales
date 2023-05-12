@@ -6,6 +6,7 @@ export default class ProductManager {
   constructor(path) {
     this.path = path;
     this.products = [];
+    this.modeproduct = true;
   }
   writeFile(data) {
     writeFileSync(this.path, JSON.stringify(data));
@@ -40,16 +41,20 @@ export default class ProductManager {
   }
   async addProduct(product) {
     let msg;
+    let bool;
     await this.getProduct();
-    const bool = this.ValidationProduct(product);
+    this.modeproduct ? (bool = this.ValidationProduct(product)) : (bool = true);
     if (bool) {
-      if (!this.products.some((pro) => pro.code === product.code)) {
+      if (
+        !this.products.some((pro) => pro.code === product.code) ||
+        this.modeproduct == false
+      ) {
         this.products.push({
           ...product,
           id: this.products.length,
         });
         this.writeFile(this.products);
-        msg = ["The product add succesfully ", STATUS_TYPES.INFO];
+        msg = [`The product add succesfully `, STATUS_TYPES.INFO];
       } else {
         msg = ["The product is already repeated", STATUS_TYPES.WARNING];
       }
@@ -67,7 +72,6 @@ export default class ProductManager {
     } else {
       product = [productfind, STATUS_TYPES.INFO];
     }
-
     return product;
   }
   async deleteProduct(id) {

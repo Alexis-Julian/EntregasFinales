@@ -185,5 +185,15 @@
     "status": true,
     "category": "asd",
     "id": 19
+  },
+  {
+    "title": "producto prueba",
+    "description": "esto es un producto prueba",
+    "price": 200,
+    "code": "aat4a43",
+    "stock": 25,
+    "status": true,
+    "category": "asd",
+    "id": 20
   }
 ]
