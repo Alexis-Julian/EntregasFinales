@@ -1,14 +1,6 @@
 import fs, { writeFileSync, readFileSync } from "fs";
-import { STATUS_TYPES } from "../utils.js";
-const productD = [
-  "category",
-  "code",
-  "description",
-  "price",
-  "status",
-  "stock",
-  "title",
-];
+import { STATUS_TYPES, PRODUCT_DICCIONARY } from "../utils.js";
+
 /* Agregar modulos archivos */
 export default class ProductManager {
   constructor(path) {
@@ -37,7 +29,7 @@ export default class ProductManager {
   ValidationProduct(product) {
     let aux = false;
     let productkey = Object.keys(product).sort();
-    productD.forEach((element, index) => {
+    PRODUCT_DICCIONARY.forEach((element, index) => {
       if (element == productkey[index]) {
         aux = true;
       } else {

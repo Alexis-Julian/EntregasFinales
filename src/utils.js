@@ -3,7 +3,15 @@ export const STATUS_TYPES = Object.freeze({
   WARNING: Symbol(),
   INFO: Symbol(),
 });
-
+export const PRODUCT_DICCIONARY = [
+  "category",
+  "code",
+  "description",
+  "price",
+  "status",
+  "stock",
+  "title",
+];
 export const STATUS_RES_GET = (product, res) => {
   if (product[1] === STATUS_TYPES.ERROR) {
     res
