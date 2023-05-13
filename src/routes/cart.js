@@ -23,9 +23,9 @@ app.post("/", async (req, res) => {
   STATUS_RES_GET(msg, res);
 });
 app.post("/:cid/product/:pid", async (req, res) => {
-  const [product, symbol] = await ProductManagerI.getProductById(
-    req.params.pid
+  const msg = CartManagerI.addProductCart(
+    req.params.cid,
+    await ProductManagerI.getProductById(req.params.pid)
   );
-  const msg = CartManagerI.addProductCart(req.params.cid, product.id);
   res.send("Llego anasheei");
 });
