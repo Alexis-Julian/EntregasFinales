@@ -23,9 +23,10 @@ app.post("/", async (req, res) => {
   STATUS_RES_GET(msg, res);
 });
 app.post("/:cid/product/:pid", async (req, res) => {
-  const msg = CartManagerI.addProductCart(
+  const msg = await CartManagerI.addProductCart(
     req.params.cid,
     await ProductManagerI.getProductById(req.params.pid)
   );
-  res.send("Llego anasheei");
+  console.log(msg);
+  STATUS_RES_GET(msg, res);
 });
