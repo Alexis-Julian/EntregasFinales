@@ -83,7 +83,7 @@ export default class ProductManager {
       if (product.find((proid) => proid.id == id)) {
         product.forEach((e) => {
           if (e.id != id) {
-            productsnew.push({ ...e, id: productsnew.length });
+            productsnew.push({ ...e });
           } else {
             productdelete = e;
           }
